@@ -1,6 +1,6 @@
 # SlackBot - Hotel Booking App
 
-##Installation
+# Installation
 
     git clone https://github.com/nikhilag13/SlackBot.git
     cd SlackBot
@@ -11,7 +11,8 @@ Follow this link for slack bot integrations - https://www.fullstackpython.com/bl
 
 Run sql command in sql/slackbot.sql to create pre-req database and tables.
 
-##Running Command
+# Running Command
+
     python python/starterbot.py
 
 Now open slack app and start messaging with bot (Tip: To communicate with bot tag you bot eg.@mybot in every message.)
