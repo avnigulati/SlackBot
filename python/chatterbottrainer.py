@@ -44,7 +44,7 @@ class chatterbottrainer:
 
        #chatbot.set_trainer(ChatterBotCorpusTrainer)
 
-       conv = open('test.txt','r').readlines()
+       conv = open('data/test.txt','r').readlines()
 
        self.chatbot.set_trainer(ListTrainer)
 
