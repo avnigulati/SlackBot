@@ -19,7 +19,7 @@ class MyLogicAdapter(LogicAdapter):
             try:
                 with conn.cursor() as cursor:
                     # Create a new record
-                    sql = "UPDATE  `currentuser` SET `username` = %s WHERE `id`= 01"
+                    sql = "UPDATE  `slackbot`.`currentuser` SET `username` = %s WHERE `id`= 01"
                     cursor.execute(sql, (words[-1]))
 
                 conn.commit()

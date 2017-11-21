@@ -6,14 +6,14 @@ from chatterbottrainer import chatterbottrainer
 
 
 # starterbot's ID as an environment variable
-BOT_ID = os.environ.get("BOT_ID")
+#BOT_ID = os.environ.get("U7YHF269H")
 
 # constants
-AT_BOT = "<@" + BOT_ID + ">"
+AT_BOT = "<@" + 'U7YHF269H' + ">"
 
 
 # instantiate Slack & Twilio clients
-slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
+slack_client = SlackClient('xoxb-270593074323-3Bs4z1hFUUzbYSAsyx0K2T9h')
 #State can be Greetings, Name, Book, RoomType, Days, Price, Confirm
 State = "Greetings"
 User = "None"
