@@ -2,18 +2,19 @@ import os
 import time
 from slackclient import SlackClient
 from chatterbottrainer import chatterbottrainer
+#from chatterbot import chatterbot
+from config import *
 
 
 
 # starterbot's ID as an environment variable
-BOT_ID = os.environ.get("BOT_ID")
+#BOT_ID = os.environ.get("U7YHF269H")
 
 # constants
-AT_BOT = "<@" + BOT_ID + ">"
-
+AT_BOT = "<@" + 'U86NZ03UH' + ">"
 
 # instantiate Slack & Twilio clients
-slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
+slack_client = SlackClient('xoxb-278781003969-mfu9TSloM200qkDMb3g7Yegq')
 #State can be Greetings, Name, Book, RoomType, Days, Price, Confirm
 State = "Greetings"
 User = "None"
@@ -55,6 +56,7 @@ def parse_slack_output(slack_rtm_output):
 
 if __name__ == "__main__":
     READ_WEBSOCKET_DELAY = 1 # 1 second delay between reading from firehose
+
     if slack_client.rtm_connect():
         print("StarterBot connected and running!")
         while True:
@@ -64,3 +66,5 @@ if __name__ == "__main__":
             time.sleep(READ_WEBSOCKET_DELAY)
     else:
         print("Connection failed. Invalid Slack token or bot ID?")
+
+    conn.close()
