@@ -19,8 +19,8 @@ class CancelAdapter(LogicAdapter):
         if all(x in statement.text.split() for x in set1):
             words = statement.text.split()
             print("i am in cancel adapter")
-            print("current name in cancel =" + chatterbotadaper.currentname123)
-            CancelName= chatterbotadaper.currentname123
+            print("current name in cancel =" + chatterbotadaper.currentname)
+            CancelName= chatterbotadaper.currentname
             try:
                 with conn.cursor() as cursor:
                     userID = "SELECT id FROM slackbot.currentuser WHERE username = (%s)"
