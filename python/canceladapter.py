@@ -23,8 +23,12 @@ class CancelAdapter(LogicAdapter):
             CancelName= chatterbotadaper.currentname123
             try:
                 with conn.cursor() as cursor:
-                    cancel = "DELETE FROM slackbot.bookings WHERE username = (%s)"
-                    cursor.execute(cancel, (CancelName) )
+                    userID = "SELECT id FROM slackbot.currentuser WHERE username = (%s)"
+                    cursor.execute(userID, (CancelName) )
+                    result4 = cursor.fetchone()[0]
+
+                    cancel = "DELETE FROM slackbot.bookings WHERE customer_id = (%s)"
+                    cursor.execute(cancel, (result4) )
                     conn.commit()
             except:
                 print("SQL error !")
