@@ -16,21 +16,13 @@ class RoomAdapter(LogicAdapter):
         set1 = ['book','suite', 'room']
         set2 = ['book','delux', 'room']
         set3 = ['book','condo', 'room']
-        set4 = ['suite']
-        set5 = ['delux']
-        set6 = ['condo']
+        
 
         if all(x in statement.text.split() for x in set1):
             return True
         elif all(x in statement.text.split() for x in set2):
             return True
         elif all(x in statement.text.split() for x in set3):
-            return True
-        elif all(x in statement.text.split() for x in set4):
-            return True
-        elif all(x in statement.text.split() for x in set6):
-            return True
-        elif all(x in statement.text.split() for x in set6):
             return True
         else:
             return False
@@ -80,7 +72,6 @@ class RoomAdapter(LogicAdapter):
         elif("delux" in statement.text):
             price = 200
             room = "deluxe"
-            conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='saloni', db='slackbot')
             Description = "desc here "
             No_of_rooms = ""
             #global typeroom
@@ -104,7 +95,7 @@ class RoomAdapter(LogicAdapter):
                 print("SQL error !")
 
 
-            str11 = "  * The rent per night is " + str(price[0]) + ".*"
+            str11 = "  * The rent per night is " + str(price) + ".*"
             response_statement = Statement("Please refer to the details of deluxe room-" + ". \n" + ''.join(Description)
                                  + ". \n " + "The price per night is" + ". \n " + ''.join(str(price)) + " :smile: " + BookQ)
             response_statement.confidence = 1
