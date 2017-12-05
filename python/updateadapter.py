@@ -24,8 +24,8 @@ class UpdateAdapter(LogicAdapter):
             print("i am in update adapter")
             newRoomType = (words[-1])
             print("new room type = "+ newRoomType)
-            print("current name in room update =" + chatterbotadaper.currentname123)
-            UpdateName= chatterbotadaper.currentname123
+            print("current name in room update =" + chatterbotadaper.currentname)
+            UpdateName= chatterbotadaper.currentname
 
             #try:
             with conn.cursor() as cursor:
@@ -57,8 +57,8 @@ class UpdateAdapter(LogicAdapter):
             print("i am in update adapter")
             newRoomType = (words[-1])
             print("new room type = "+ newRoomType)
-            print("current name in ckeckIn update =" + chatterbotadaper.currentname123)
-            UpdateName= chatterbotadaper.currentname123
+            print("current name in ckeckIn update =" + chatterbotadaper.currentname)
+            UpdateName= chatterbotadaper.currentname
             try:
                 with conn.cursor() as cursor:
                     newCheckIn = (words[-1])
