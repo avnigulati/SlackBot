@@ -5,6 +5,8 @@ import pymysql
 from config import *
 
 
+current_user_id = 0
+current_name = ""
 class MyLogicAdapter(LogicAdapter):
     def can_process(self, statement):
         """
@@ -42,6 +44,11 @@ class MyLogicAdapter(LogicAdapter):
         from chatterbot.conversation import Statement
         words = statement.text.split()
         response_statement = Statement('Welcome '+ words[-1] +'! Which room do you want')
+        global current_name
+        current_name  = words[-1]
+        print("=================i am printing current_name" + current_name)
+        global current_user_id
+        current_user_id = 789 
         response_statement.confidence = 1
         print(response_statement.confidence)
         return response_statement

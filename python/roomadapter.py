@@ -2,6 +2,7 @@
 from chatterbot.logic import LogicAdapter
 import pymysql.cursors
 import pymysql
+import chatterbotadaper
 
 
 class RoomAdapter(LogicAdapter):
@@ -43,6 +44,8 @@ class RoomAdapter(LogicAdapter):
             Description = "desc here "
             No_of_rooms = ""
     
+            print("Currentname is  :  ==============="+ chatterbotadaper.current_name)
+            print("%d", chatterbotadaper.current_user_id)
             try:
                 with conn.cursor() as cursor:
                     # Create a new record
@@ -73,7 +76,6 @@ class RoomAdapter(LogicAdapter):
 
         
         response_statement = Statement(room + " room price per day is " + str(price) + " USD")
-
         response_statement.confidence = 1
         print(response_statement.confidence)
 

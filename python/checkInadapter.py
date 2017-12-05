@@ -16,6 +16,7 @@ class CheckInAdapter(LogicAdapter):
 
         # User should write in this format= Check In : mm/dd/yyyy
         set111 = ['check', 'in']
+        set2 = ['arrival', 'date']
         
 
         if all(x in statement.text.split() for x in set111):

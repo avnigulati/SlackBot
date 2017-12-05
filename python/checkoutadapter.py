@@ -33,7 +33,7 @@ class CheckOutAdapter(LogicAdapter):
         try:
             with conn.cursor() as cursor:
                 #update bookings table with check in date at id 01 
-                sql = "UPDATE  `slackbot`.`bookings` SET `check_out` = %s WHERE `id`= 01"
+                sql = "UPDATE  `slackbot`.`bookings` SET `check_out` = %s WHERE `id`= 02"
                 cursor.execute(sql, (words[-1]))
             conn.commit()
         except:
