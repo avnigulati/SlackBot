@@ -41,6 +41,12 @@ class chatterbottrainer:
                    'import_path': 'checkoutadapter.CheckOutAdapter'
                },
                {
+                   'import_path': 'updateadapter.UpdateAdapter'
+               },
+               {
+                   'import_path': 'canceladapter.CancelAdapter'
+               },
+               {
                    'import_path': 'chatterbot.logic.LowConfidenceAdapter',
                    'threshold': 0.65,
                    'default_response': 'I am sorry, I do not understand.'
@@ -65,4 +71,3 @@ class chatterbottrainer:
        response = self.chatbot.get_response(request)
        print(response)
        return response
-

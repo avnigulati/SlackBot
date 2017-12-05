@@ -2,6 +2,7 @@ import os
 import time
 from slackclient import SlackClient
 from chatterbottrainer import chatterbottrainer
+# from chatterbot import chatterbot
 from config import *
 
 
