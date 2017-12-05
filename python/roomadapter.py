@@ -5,7 +5,7 @@ import pymysql
 from config import *
 import chatterbotadaper
 
-
+typeroom=""
 class RoomAdapter(LogicAdapter):
     def can_process(self, statement):
         """
@@ -40,7 +40,7 @@ class RoomAdapter(LogicAdapter):
 
         price =0
         room =""
-        BookQ = "\n When do you plan to check into the room? Pls write in format= Check In : mm/dd/yyyy "
+        BookQ = "\n When do you plan to check into the room? Pls write in format= Check In date : mm/dd/yyyy "
 
         if("suite" in statement.text):
             price = 200
@@ -48,8 +48,9 @@ class RoomAdapter(LogicAdapter):
             conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='saloni', db='slackbot')
             Description = "desc here "
             No_of_rooms = ""
-            
-            print(chatterbotadaper.currentname)
+            global typeroom
+            typeroom='suite'
+            #print(chatterbotadaper.currentname)
             try:
                 with conn.cursor() as cursor:
                     # Create a new record
@@ -63,7 +64,7 @@ class RoomAdapter(LogicAdapter):
                     sql2 = "SELECT RentPerNight FROM slackbot.RoomType WHERE Type='suite'";
                     cursor.execute(sql2)
                     price = cursor.fetchone()
-                    typeroom = 'suite'
+                    #typeroom = 'suite'
                 conn.commit()
             except:
                 print("SQL error !")
@@ -83,6 +84,8 @@ class RoomAdapter(LogicAdapter):
             conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='saloni', db='slackbot')
             Description = "desc here "
             No_of_rooms = ""
+            #global typeroom
+            typeroom='delux'
             try:
                 with conn.cursor() as cursor:
                     # Create a new record
@@ -96,7 +99,7 @@ class RoomAdapter(LogicAdapter):
                     sql2 = "SELECT RentPerNight FROM slackbot.RoomType WHERE Type='deluxe'";
                     cursor.execute(sql2)
                     price = cursor.fetchone()
-                    typeroom='deluxe'
+                    #typeroom='deluxe'
                 conn.commit()
             except:
                 print("SQL error !")
@@ -115,6 +118,8 @@ class RoomAdapter(LogicAdapter):
             conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='saloni', db='slackbot')
             Description = "desc here "
             No_of_rooms = ""
+            #global typeroom
+            typeroom="condo"
             try:
                 with conn.cursor() as cursor:
                     # Create a new record
@@ -128,7 +133,7 @@ class RoomAdapter(LogicAdapter):
                     sql2 = "SELECT RentPerNight FROM slackbot.RoomType WHERE Type='condo'";
                     cursor.execute(sql2)
                     price = cursor.fetchone()
-                    typeroom='condo'
+                    #typeroom='condo'
                 conn.commit()
             except:
                 print("SQL error !")
