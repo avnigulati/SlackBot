@@ -70,12 +70,17 @@ class CheckInAdapter(LogicAdapter):
                    sql5 = "SELECT `id` from `slackbot`.`currentuser` WHERE `username` = '%s'" % (chatterbotadaper.currentname)
                    cursor.execute(sql5)
                    result4 = cursor.fetchone()[0]
-                   
+                   sql6 = "SELECT `RentPerNight` from `slackbot`.`roomtype` WHERE `Type` = '%s'" % (roomadapter.typeroom)
+                   cursor.execute(sql6)
+                   price = cursor.fetchone()[0]
                    sql4 = "insert into `slackbot`.bookings(roomType,check_in,roomnumber,customer_id) VALUES('%s', '%s', '%d', '%d')" % \
                            (roomadapter.typeroom, words[-1] , result3 , result4)
                    cursor.execute(sql4)
-                   response_statement = Statement("Your booking has been done.Your room number is -" + ". \n" + ''.join(result3))
-                                
+                   #sql7 = "
+                   
+                   response_statement = Statement("Your booking has been done.Your room number is -" + ''.join(str(result3)) + ". \n" + "The total price is" + ''.join(str(price)) + ". \n" + "Looking forward to see you on" + ''.join(userdate))
+                    #Statement("Please refer to the details of condo room-" + ". \n" + ''.join(Description)
+                                 #+ ". \n " + "The price per night is" + ". \n " + ''.join(str(price)) + " :smile: " + BookQ)            
                 else:
                     response_statement = Statement("The room is not available")
                     
