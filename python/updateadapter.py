@@ -26,21 +26,31 @@ class UpdateAdapter(LogicAdapter):
             print("new room type = "+ newRoomType)
             print("current name in room update =" + chatterbotadaper.currentname123)
             UpdateName= chatterbotadaper.currentname123
-            try:
-                with conn.cursor() as cursor:
+
+            #try:
+            with conn.cursor() as cursor:
                     newRoomType = (words[-1])
                     print("new room type = "+ newRoomType)
-                    updateRoom = "UPDATE  slackbot.bookings SET roomType = (%s) WHERE username = (%s)"
-                    cursor.execute(updateRoom, (newRoomType, UpdateName) )
-                    newPrice = "SELECT RentPerNight FROM slackbot.RoomType WHERE Type=(%s)";
+                    # userID = "SELECT id FROM slackbot.currentuser WHERE username = (%s)"
+                    # cursor.execute(userID, (UpdateName) )
+                    sql5 = "SELECT * FROM slackbot.currentuser WHERE username = (%s)"
+                    cursor.execute(sql5, (UpdateName))
+                    # print(" user id " + userID)
+                    result4 = cursor.fetchone()[0]
+                    print(type(result4))
+                    print("user id " + str(result4))
+                    updateRoom = "UPDATE  slackbot.bookings SET roomType = (%s) WHERE customer_id = (%s)"
+
+                    cursor.execute(updateRoom, (newRoomType, result4))
+                    newPrice = "SELECT RentPerNight FROM slackbot.roomtype WHERE Type=(%s)";
                     cursor.execute(newPrice,(newRoomType))
                     price = cursor.fetchone()
 
-                    resp_str = ("Now, your room price per day is " + str(price[0]) + " USD")
+                    resp_str = (UpdateName +", your room price per day is " + str(price[0]) + " USD")
                     #"  * The rent per night is " + str(price[0]) + ".*"
                     conn.commit()
-            except:
-                print("SQL error !")
+            #except:
+                #print("SQL error !")
             return True
         if all(x in statement.text.split() for x in set2):
             words = statement.text.split()
@@ -54,9 +64,12 @@ class UpdateAdapter(LogicAdapter):
                     newCheckIn = (words[-1])
                     print("new room type = "+ newCheckIn)
                     #print("current name in update =" + currentname)
-                    updateCheckIn = "UPDATE  slackbot.bookings SET checkIn = (%s) WHERE username = (%s)"
-                    cursor.execute(updateCheckIn, (newCheckIn, UpdateName) )
-                    resp_str = ("Check-In date has been modified. ")
+                    userID = "SELECT id FROM slackbot.currentuser WHERE username = (%s)"
+                    cursor.execute(userID, (UpdateName))
+                    result4 = cursor.fetchone()[0]
+                    updateCheckIn = "UPDATE  slackbot.bookings SET check_in = (%s) WHERE customer_id = (%s)"
+                    cursor.execute(updateCheckIn, (newCheckIn, result4) )
+                    resp_str = (UpdateName +", your check-in date has been modified. ")
                     conn.commit()
             except:
                 print("SQL error !")
