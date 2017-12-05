@@ -7,3 +7,4 @@ conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='avni123
 booking_ID = 1
 customer_ID = 1
 userexists = 0
+currentname=""

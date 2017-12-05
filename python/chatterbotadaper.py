@@ -2,8 +2,9 @@
 from chatterbot.logic import LogicAdapter
 import pymysql.cursors
 import pymysql
-from config import *
+from config import currentname, conn
 
+currentname123 = ""
 userexists = 0
 class MyLogicAdapter(LogicAdapter):
     def can_process(self, statement):
@@ -29,7 +30,8 @@ class MyLogicAdapter(LogicAdapter):
                     if cursor.fetchone()[0]:
                        print("The username already exists in the database.")
                        userexists = 1
-                       currentname= (words[-1])
+                       global currentname123
+                       currentname123= (words[-1])
                        print("current name in chatterbot =" + currentname)
                        #return("The username already exists, please renter another username in the format Username : Yourusername")
                     else:

@@ -1,4 +1,3 @@
-
 from chatterbot.logic import LogicAdapter
 import pymysql.cursors
 import pymysql
@@ -73,7 +72,7 @@ class RoomAdapter(LogicAdapter):
             room = "Condo"
 
 
-        response_statement = Statement(room + " room price per day is " + str(price) + " USD")
+        response_statement = Statement(room + " room price per day is " + price + " USD")
 
         response_statement.confidence = 1
         print(response_statement.confidence)
