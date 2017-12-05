@@ -2,7 +2,7 @@ import os
 import time
 from slackclient import SlackClient
 from chatterbottrainer import chatterbottrainer
-#from chatterbot import chatterbot
+# from chatterbot import chatterbot
 from config import *
 
 
@@ -11,10 +11,10 @@ from config import *
 #BOT_ID = os.environ.get("U7YHF269H")
 
 # constants
-AT_BOT = "<@" + 'U82R14VBP' + ">"
+AT_BOT = "<@" + 'U7YHF269H' + ">"
 
 # instantiate Slack & Twilio clients
-slack_client = SlackClient('xoxb-274851165397-eeJw1dxm6LGteUaSJxanIe4u')
+slack_client = SlackClient('xoxb-270593074323-3Bs4z1hFUUzbYSAsyx0K2T9h')
 #State can be Greetings, Name, Book, RoomType, Days, Price, Confirm
 State = "Greetings"
 User = "None"

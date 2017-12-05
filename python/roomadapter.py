@@ -45,7 +45,6 @@ class RoomAdapter(LogicAdapter):
         if("suite" in statement.text):
             price = 200
             room = "Suite"
-            conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='saloni', db='slackbot')
             Description = "desc here "
             No_of_rooms = ""
             global typeroom
@@ -70,7 +69,7 @@ class RoomAdapter(LogicAdapter):
                 print("SQL error !")
 
 
-            str11 = "  * The rent per night is " + str(price[0]) + ".*"
+            str11 = "  * The rent per night is " + str(price) + ".*"
             response_statement = Statement("Please refer to the details of suite room-" + ". \n" + ''.join(Description)
                                  + ". \n " + "The price per night is" + ". \n " + ''.join(str(price)) + " :smile: " + BookQ)
             response_statement.confidence = 1

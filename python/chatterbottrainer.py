@@ -44,6 +44,9 @@ class chatterbottrainer:
                    'import_path': 'updateadapter.UpdateAdapter'
                },
                {
+                   'import_path': 'canceladapter.CancelAdapter'
+               },
+               {
                    'import_path': 'chatterbot.logic.LowConfidenceAdapter',
                    'threshold': 0.65,
                    'default_response': 'I am sorry, I do not understand.'
