@@ -64,7 +64,7 @@ class CheckInAdapter(LogicAdapter):
                    #format_strings = ','.join(['%s'] * len(list_of_ids))
                    #cursor.execute("DELETE FROM foo.bar WHERE baz IN (%s)" % format_strings,
                    #tuple(list_of_ids))
-                   sql3="SELECT `roomnumber` FROM `slackbot`.`roomnumber` WHERE `roomnumber` NOT IN (SELECT `roomnumber` FROM `slackbot`.`bookings` WHERE `roomType` = '%s' AND `check_in` = '%s')" % (roomadapter.typeroom, words[-1])
+                   sql3="SELECT `roomnumber` FROM `slackbot`.`roomnumber` WHERE `roomtype` = '%s' AND `roomnumber` NOT IN (SELECT `roomnumber` FROM `slackbot`.`bookings` WHERE `roomType` = '%s' AND `check_in` = '%s')" % (roomadapter.typeroom, roomadapter.typeroom, words[-1])
                    cursor.execute(sql3)
                    result3 = cursor.fetchone()[0]
                    sql5 = "SELECT `id` from `slackbot`.`currentuser` WHERE `username` = '%s'" % (chatterbotadaper.currentname)

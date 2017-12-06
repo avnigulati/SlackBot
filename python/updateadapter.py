@@ -44,9 +44,10 @@ class UpdateAdapter(LogicAdapter):
                     cursor.execute(updateRoom, (newRoomType, result4))
                     newPrice = "SELECT RentPerNight FROM slackbot.roomtype WHERE Type=(%s)";
                     cursor.execute(newPrice,(newRoomType))
-                    price = cursor.fetchone()
+                    price = cursor.fetchone()[0]
+                    price1 = price
 
-                    resp_str = (UpdateName +", your room price per day is " + str(price[0]) + " USD")
+                    resp_str = (UpdateName +", your room price per day is " + str(price1) + " USD")
                     #"  * The rent per night is " + str(price[0]) + ".*"
                     conn.commit()
             #except:

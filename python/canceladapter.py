@@ -3,6 +3,7 @@ import pymysql.cursors
 import pymysql
 from config import *
 import chatterbotadaper
+import style
 
 
 class CancelAdapter(LogicAdapter):
@@ -15,6 +16,7 @@ class CancelAdapter(LogicAdapter):
         global words
 
         set1 = ['yes','cancel']
+        #set2 = ['yes' , 'delete']
 
         if all(x in statement.text.split() for x in set1):
             words = statement.text.split()
@@ -39,7 +41,7 @@ class CancelAdapter(LogicAdapter):
 
     def process(self, statement):
         from chatterbot.conversation import Statement
-        response_statement = Statement("Your booking has been cancelled !")
+        response_statement = Statement("Your booking has been cancelled !  ")
         response_statement.confidence = 1
         print(response_statement.confidence)
         return response_statement
