@@ -104,7 +104,7 @@ class MyLogicAdapter(LogicAdapter):
           response_statement = Statement('There is already another user with the same username.Please enter another username in the format username is "yourusername" or if you have already done the booking with the same username enter "update" for updating the booking and "delete" for deleting the booking')
           userexists = 0
         else:
-          response_statement = Statement('Welcome '+ words[-1] +'! Which room do you want Suite,Deluxe or Condo?')
-        response_statement.confidence = 1
+          response_statement = Statement('Welcome '+ words[-1] +'! \n Which room do you want Suite room , Deluxe room  or Condo room?')
+        response_statement.confidence = 1 
         print(response_statement.confidence)
         return response_statement

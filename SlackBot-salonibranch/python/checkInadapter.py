@@ -7,6 +7,7 @@ from roomadapter import *
 from chatterbotadaper import * 
 import roomadapter
 import chatterbotadaper
+import datetime
 
 
 class CheckInAdapter(LogicAdapter):
@@ -47,6 +48,18 @@ class CheckInAdapter(LogicAdapter):
                 #if result1 > result:
                 #   available = 13
                 userdate = words[-1]
+                CurrentDate = "12/06/2017"
+                CurrentDate = datetime.datetime.strptime(CurrentDate, "%m/%d/%Y")
+                print(CurrentDate)
+
+                ExpectedDate = words[-1]
+                ExpectedDate = datetime.datetime.strptime(ExpectedDate, "%m/%d/%Y")
+                print(ExpectedDate)
+
+                if ExpectedDate > CurrentDate:
+                    print("Date seems fine")
+                else:
+                    print("Date is in past")
                 sql = "SELECT COUNT(*) FROM `slackbot`.`roomnumber` WHERE `roomtype` = %s"
                 cursor.execute(sql,roomadapter.typeroom)
                 result = cursor.fetchone()[0]
@@ -54,7 +67,10 @@ class CheckInAdapter(LogicAdapter):
                 sql2 = "SELECT COUNT(*) FROM `slackbot`.`bookings` WHERE `roomType` = '%s' AND `check_in` = '%s'" % (roomadapter.typeroom, words[-1])
                 cursor.execute(sql2)
                 result2 = cursor.fetchone()[0]
-                if result != result2:
+                if ExpectedDate < CurrentDate:
+                    #print("Please enter another check-in Date. Your Previous entry in Invalid!")
+                    response_statement = Statement("Please enter another check-in Date. Your Previous entry in Invalid!")
+                elif result != result2:
                    print("moke")
                    #sql3 = "SELECT `roomnumber` FROM `slackbot`.`bookings` WHERE `roomType` = '%s' AND `check_in` = '%s'" % (roomadapter.typeroom, words[-1])
                    #cursor.execute(sql3)
@@ -64,7 +80,7 @@ class CheckInAdapter(LogicAdapter):
                    #format_strings = ','.join(['%s'] * len(list_of_ids))
                    #cursor.execute("DELETE FROM foo.bar WHERE baz IN (%s)" % format_strings,
                    #tuple(list_of_ids))
-                   sql3="SELECT `roomnumber` FROM `slackbot`.`roomnumber` WHERE `roomtype` = '%s' AND `roomnumber` NOT IN (SELECT `roomnumber` FROM `slackbot`.`bookings` WHERE `roomType` = '%s' AND `check_in` = '%s')" % (roomadapter.typeroom, roomadapter.typeroom, words[-1])
+                   sql3="SELECT `roomnumber` FROM `slackbot`.`roomnumber` WHERE `roomnumber` NOT IN (SELECT `roomnumber` FROM `slackbot`.`bookings` WHERE `roomType` = '%s' AND `check_in` = '%s')" % (roomadapter.typeroom, words[-1])
                    cursor.execute(sql3)
                    result3 = cursor.fetchone()[0]
                    sql5 = "SELECT `id` from `slackbot`.`currentuser` WHERE `username` = '%s'" % (chatterbotadaper.currentname)

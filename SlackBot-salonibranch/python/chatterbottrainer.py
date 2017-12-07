@@ -38,9 +38,6 @@ class chatterbottrainer:
                    'import_path': 'checkInadapter.CheckInAdapter'
                },
                {
-                   'import_path': 'checkoutadapter.CheckOutAdapter'
-               },
-               {
                    'import_path': 'updateadapter.UpdateAdapter'
                },
                {

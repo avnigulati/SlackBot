@@ -1,5 +1,4 @@
 hi
-Namaste
 Hello! Welcome to Novotel Hotel Booking
 hello
 Hello! Welcome to Novotel Hotel Booking
@@ -9,7 +8,7 @@ i need a room
 Sure! What is your name
 hotel reservation
 Sure! What is your name
-where is the Hotel
+where is Hotel
 Novotel at Fremont Blvd
 hotel address
 Novotel at Fremont Blvd

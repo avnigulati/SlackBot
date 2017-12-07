@@ -3,7 +3,6 @@ import pymysql.cursors
 import pymysql
 from config import *
 import chatterbotadaper
-import style
 
 
 class CancelAdapter(LogicAdapter):

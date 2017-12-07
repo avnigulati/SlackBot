@@ -35,7 +35,7 @@ class UpdateAdapter(LogicAdapter):
                     # cursor.execute(userID, (UpdateName) )
                     sql5 = "SELECT * FROM slackbot.currentuser WHERE username = (%s)"
                     cursor.execute(sql5, (UpdateName))
-                    # print(" user id " + userID)
+                    #print(" user id " + userID)
                     result4 = cursor.fetchone()[0]
                     print(type(result4))
                     print("user id " + str(result4))
@@ -44,10 +44,9 @@ class UpdateAdapter(LogicAdapter):
                     cursor.execute(updateRoom, (newRoomType, result4))
                     newPrice = "SELECT RentPerNight FROM slackbot.roomtype WHERE Type=(%s)";
                     cursor.execute(newPrice,(newRoomType))
-                    price = cursor.fetchone()[0]
-                    price1 = price
+                    price = cursor.fetchone()
 
-                    resp_str = (UpdateName +", your room price per day is " + str(price1) + " USD")
+                    resp_str = (UpdateName +", your updated room price per day is `" + str(price[0]) + " USD `")
                     #"  * The rent per night is " + str(price[0]) + ".*"
                     conn.commit()
             #except:
