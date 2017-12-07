@@ -1,11 +1,12 @@
 hi
-Namaste
 Hello! Welcome to Novotel Hotel Booking
 hello
 Hello! Welcome to Novotel Hotel Booking
 Book a room
-Sure! What is your name
-i need a room
-Sure! What is your name
+Sure! What is your name ?
 where is the Hotel
 Novotel at Fremont Blvd
+what kind of rooms do you have ?
+What kind of room do you need ? Please describe below.
+i need a room
+What kind of room do you need ? Please describe below and help me recommend you. For example : small size room needed for 2 nights, sea facing, etc.
