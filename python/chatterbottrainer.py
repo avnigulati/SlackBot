@@ -47,6 +47,11 @@ class chatterbottrainer:
                    'import_path': 'canceladapter.CancelAdapter'
                },
                {
+                   'import_path': 'recommenderadapter.RecommenderAdapter',
+                # "statement_comparison_function": "chatterbot.comparisons.levenshtein_distance",
+                   # "response_selection_method": "chatterbot.response_selection.get_first_response"
+               },
+               {
                    'import_path': 'chatterbot.logic.LowConfidenceAdapter',
                    'threshold': 0.65,
                    'default_response': 'I am sorry, I do not understand.'
@@ -56,6 +61,12 @@ class chatterbottrainer:
 
        #chatbot.set_trainer(ChatterBotCorpusTrainer)
 
+       # self.chatbot.set_trainer(ListTrainer)
+       # self.chatbot.train([
+       # 'i need a room in your hotel',
+       # 'What kind of room do you need ? Please describe.\n for example : small size room for 2 nights, sea facing..etc'
+       #
+       # ])
        conv = open('data/test.txt','r').readlines()
 
        self.chatbot.set_trainer(ListTrainer)
