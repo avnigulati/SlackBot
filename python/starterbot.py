@@ -11,10 +11,10 @@ from config import *
 #BOT_ID = os.environ.get("U7YHF269H")
 
 # constants
-AT_BOT = "<@" + 'U86NZ03UH' + ">"
+AT_BOT = "<@" + '123' + ">"
 
 # instantiate Slack & Twilio clients
-slack_client = SlackClient('xoxb-278781003969-mfu9TSloM200qkDMb3g7Yegq')
+slack_client = SlackClient('456')
 #State can be Greetings, Name, Book, RoomType, Days, Price, Confirm
 State = "Greetings"
 User = "None"
